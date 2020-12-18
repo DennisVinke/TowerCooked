@@ -3,8 +3,8 @@
 //grid based
 //camera movement
 
-int GAME_WIDTH = 800;
-int GAME_HEIGHT = 600;
+public static final int GAME_WIDTH = 800;
+public static final int GAME_HEIGHT = 600;
 Player player;
 Item item;
 void settings(){
