@@ -17,16 +17,16 @@ class Player{
      switch(theKey){
        // Movement
        case 'W':
-       case 'w': y -= ySpeed; break;
+       case 'w': yPos -= ySpeed; break;
        
        case 'A':
-       case 'a': x -= xSpeed; break;
+       case 'a': xPos -= xSpeed; break;
        
        case 'S':
-       case 's': y += ySpeed; break;
+       case 's': yPos += ySpeed; break;
        
        case 'D':
-       case 'd': x += xSpeed; break;
+       case 'd': xPos += xSpeed; break;
      }
   }
   
