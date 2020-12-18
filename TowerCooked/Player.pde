@@ -1,4 +1,6 @@
 class Player{
+  Inventory inventory = new Inventory();
+  
   int xPos;
   int yPos;
   int xSpeed = 1;
@@ -17,6 +19,7 @@ class Player{
   
   void display(){
      ellipse(xPos, yPos, 10, 10);   
+     inventory.display();
   }
   
   void update(){
