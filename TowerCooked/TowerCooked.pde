@@ -5,31 +5,38 @@
 
 public static final int GAME_WIDTH = 800;
 public static final int GAME_HEIGHT = 600;
-Player player;
+Player playerOne;
+Player playerTwo;
 Item item;
 void settings(){
   size(GAME_WIDTH, GAME_HEIGHT);
 }
 
 void setup(){
-  item  = new Item();
-  player = new Player(50, 50);
+  item  = new Item(10, 10);
+  playerOne = new Player(50, 50, 0);
+  playerTwo = new Player(100, 100, 1);
 }
 
 void draw(){
   background(255);
   
-  // All things player
-  player.display();
-  player.update();
+  // PLAYER
+  playerOne.display();
+  playerTwo.display();
+  playerOne.update();
+  playerTwo.update();
   
+  // ITEM
   item.display();
 }
 
 void keyPressed(){
-  player.keyPressEvent(key);    
+  playerOne.keyPressEvent(key);
+  playerTwo.keyPressEvent(key);    
 }
 
 void keyReleased(){
-  player.keyReleaseEvent(key);
+  playerOne.keyReleaseEvent(key);
+  playerTwo.keyReleaseEvent(key);
 }
