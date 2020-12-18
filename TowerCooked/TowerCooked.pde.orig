@@ -1,7 +1,4 @@
-//world
-//array --> map tiles
-//grid based
-//camera movement
+<<<<<<< Updated upstream
 
 int GAME_WIDTH = 200;
 int GAME_HEIGHT = 200;
@@ -23,3 +20,9 @@ void draw(){
 void keyPressed(){
   player.keyEvent(key);    
 }
+=======
+//world
+//array --> map tiles
+//grid based
+//camera movement
+>>>>>>> Stashed changes
