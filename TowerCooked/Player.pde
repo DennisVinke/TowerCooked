@@ -40,7 +40,7 @@ class Player extends GameObject {
     // MOVEMENT
     if (moveLeft  && checkCollisionStatic(xPos-xSpeed, yPos))  xPos -= xSpeed; 
     if (moveRight && checkCollisionStatic(xPos+xSpeed, yPos))  xPos += xSpeed; 
-    if (moveUp    && checkCollisionStatic(xPosx, yPos-yspeed)) yPos -= ySpeed; 
+    if (moveUp    && checkCollisionStatic(xPos, yPos-ySpeed)) yPos -= ySpeed; 
     if (moveDown  && checkCollisionStatic(xPos, yPos+ySpeed))  yPos += ySpeed;
 
     // TOGGLE RUNNING

@@ -1,3 +1,3 @@
-class CollisionManager(){
+class CollisionManager{
     CollisionManager(){}
 }

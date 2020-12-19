@@ -11,7 +11,7 @@ class World {
     for (int x = 0; x < sizeX; x++) {
       for (int y = 0; y < sizeY; y++) {
         String[] row = lines[y].split(",");
-        level[x][y] = resources.getTileFromMap(""+(row[x]));
+        level[x][y] = resources.getTileFromMap(""+(row[x])).id;
       }
     }
   }
