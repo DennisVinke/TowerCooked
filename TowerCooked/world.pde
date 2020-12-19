@@ -11,8 +11,8 @@ class World {
     for (int x = 0; x < sizeX; x++) {
       for (int y = 0; y < sizeY; y++) {
         String[] row = lines[y].split(",");
-        level[x][y] = resources.getTileFromMap(""+(row[x])).id;
-      }
+        level[x][y] = resources.getTileFromMap(""+row[x]);
+        }
     }
   }
 
@@ -20,26 +20,27 @@ class World {
   }
 
   boolean getTileWalkable(int x, int y) {
-    return getTileWalkable(level[x][y].resources.getTileFromMap(""+(row[x]).id));
+    return tileInWalkable(level[x][y].id);
   }
 
   boolean tileInWalkable(int index) {
-    for (int i : walkableArray) { //<>//
-      if (i==index)
+    for (int i : walkableArray) {
+      if (i==index) //<>//
         return true;
     }
     return false;
   }
 
   boolean getTileInteractable(int x, int y) {
+    return false;
   }
 
   void drawWorld() {
     for (int x = 0; x < sizeX; x++) {
       for (int y = 0; y < sizeY; y++) {
         if (level[x][y]!=null)
-          level[x][y].drawTile(x, y); //<>//
-      }
+          level[x][y].drawTile(x, y);
+      } //<>//
     }
   }
 }

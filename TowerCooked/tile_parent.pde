@@ -9,6 +9,10 @@ class Tile {
     tileImage = tile.copy();
     PIXELSIZE = pixelSize;
   }
+  
+  int getTileID(){
+    return id;
+  }
 
   void drawTile() {
     //image(tileImage, (id*16)%GAME_WIDTH, (id*16/GAME_WIDTH)*16); //<>// //<>//

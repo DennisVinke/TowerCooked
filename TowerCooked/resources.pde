@@ -20,7 +20,7 @@ class Resources {
       PImage test = createImage(PIXELSIZE, PIXELSIZE, ARGB);
       test.loadPixels();
       test.pixels = subset(overworld.pixels, i, PIXELSIZE);// 5, 5, 0, 0, PIXELSIZE, PIXELSIZE); //<>// //<>//
-      test.updatePixels(); //<>// //<>//
+      test.updatePixels();
       tileMap.put("tile"+i, new Tile(i, test, PIXELSIZE));
       //image(test,0,0);
       //break;
