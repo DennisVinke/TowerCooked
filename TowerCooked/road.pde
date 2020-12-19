@@ -1,5 +1,5 @@
 class RoadTile extends Tile{
   RoadTile(){
-    super();
+    super(0,new PImage(),0);
   }
 }
