@@ -5,17 +5,14 @@
 public static final int GAME_WIDTH = 800;
 public static final int GAME_HEIGHT = 600;
 public static final int PIXELSIZE = 16;
-GameState gameState = GameState.PLAY;
-boolean showDebug = true;
+GameState gameState = GameState.MENU;
+boolean showDebug = !true;
 
 GameMenu mainMenu;
 LevelEditor levelEditor;
-EnemySpawner enemySpawner;
 
 Player playerOne;
 Player playerTwo;
-
-Base base;
 
 Item item;
 static Resources resources;
@@ -26,8 +23,7 @@ void settings() {
 }
 
 void setup() {
-  base = new Base(100, 100);
-  enemySpawner = new EnemySpawner(200, 200);
+
   mainMenu = new GameMenu(gameState);
   resources = new Resources();
   resources.populateTileMap();
@@ -48,34 +44,31 @@ void draw() {
   case LEVELEDITOR:
     levelEditor.drawLevelEditor();
     break;
+  case TILEMAPDEBUG:
+    background(255);
+    pushMatrix();
+    //scale(2);
+    resources.drawAllResources();
+    drawGrid(16);
+    popMatrix();
+    break;
   case PLAY :
     background(255);
     pushMatrix();
-    translate(playerOne.xPos, playerOne.yPos);
-    scale(2);
+    //translate(playerOne.xPos, playerOne.yPos);
+    //scale(2);
 
     drawGrid(16);
     level1.drawWorld();
 
-    // PLAYER
+    // All things player
     playerOne.display();
     playerTwo.display();
     playerOne.update();
     playerTwo.update();
 
     item.display();
-    
-    // ENEMY SPAWNER & ENEMIES
-    enemySpawner.display();
-    enemySpawner.run();
-    
-    // BASE & TOWER
-    base.display();
-    base.update();
-    
-    // COLLISION HANDLING
-    base.collision(enemySpawner.enemies);
-    
+
     //resources.drawAllResources();
     popMatrix();
     break;
@@ -92,10 +85,6 @@ void keyPressed() {
 void keyReleased() {
   playerOne.keyReleaseEvent(key);
   playerTwo.keyReleaseEvent(key);
-}
-
-void mouseClicked(){
-   enemySpawner.addEnemy(base); 
 }
 
 void drawGrid(int gridSize) {
@@ -125,5 +114,10 @@ void drawDebug() {
 void mousePressed() {
   if (gameState == GameState.MENU) {
     mainMenu.handleButtons(mouseX, mouseY);
+  }
+  if (gameState == GameState.TILEMAPDEBUG){
+    String mKey = ""+((mouseX/PIXELSIZE) + (mouseY/16)*PIXELSIZE);
+    println(mKey);
+    //resources.get
   }
 }

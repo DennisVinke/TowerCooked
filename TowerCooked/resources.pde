@@ -20,8 +20,7 @@ class Resources {
       PImage test = createImage(PIXELSIZE, PIXELSIZE, ARGB);
       test.loadPixels();
       test.pixels = subset(overworld.pixels, i, PIXELSIZE);// 5, 5, 0, 0, PIXELSIZE, PIXELSIZE); //<>//
-      print(test.pixels); //<>//
-      test.updatePixels();
+      test.updatePixels(); //<>//
       tileMap.put("tile"+i, new Tile(i, test, PIXELSIZE));
       //image(test,0,0);
       //break;
@@ -39,12 +38,27 @@ class Resources {
       for (int i = 0; i<overworld.width; i+=PIXELSIZE) {
         PImage test = createImage(PIXELSIZE, PIXELSIZE, ARGB);
         test.copy(overworld, i, j, PIXELSIZE, PIXELSIZE, 0, 0, PIXELSIZE, PIXELSIZE);
+        if(tileInWalkable(counter)){
+          if(counter==GRASS_INDEX)
+           tileMap.put(/*"tile"*/ ""+ counter, new GrassTile(counter, test, PIXELSIZE)); 
+          else
+           tileMap.put(/*"tile"*/ ""+ counter, new RoadTile(counter, test, PIXELSIZE));
+        }
         tileMap.put(/*"tile"*/ ""+ counter, new Tile(counter, test, PIXELSIZE)); 
         counter += 1;
       }
     }
+    println("Items: "+ counter);
   }
 
+  boolean tileInWalkable(int index){
+    for(int i:walkableArray){
+     if(i==index)
+       return true;
+    }
+    return false;
+  }
+  
   void drawAllResources() {
     for (Map.Entry<String, Tile> entry : tileMap.entrySet()) {
       //println(entry.getKey());

@@ -4,7 +4,8 @@ enum GameState{
   LOAD,
   PLAY,
   PAUZE,
-  LEVELEDITOR
+  LEVELEDITOR,
+  TILEMAPDEBUG
 }
 
 enum EditorState{

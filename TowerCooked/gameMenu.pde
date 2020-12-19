@@ -9,6 +9,7 @@ class GameMenu {
     buttonArray.add(new Button(400,  10, 100, 50, "PLAY"));
     buttonArray.add(new Button(400,  70, 100, 50, "LOAD"));
     buttonArray.add(new Button(400, 130, 100, 50, "LEVELEDITOR"));
+    buttonArray.add(new Button(400, 190, 100, 50, "TILEMAPDEBUG"));
   }
 
   void drawMenu() {
@@ -21,8 +22,7 @@ class GameMenu {
 
   void handleButtons(int x, int y) {
     for (Button button : buttonArray) {
-      if (button.isOver(x, y)) {
-        println("The mode is changed to " + button.text);
+      if (button.isOver(x, y)) {  
         gameState = GameState.valueOf(button.text);
       }
     }
