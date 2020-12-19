@@ -4,10 +4,12 @@
 //camera movement
 public static final int GAME_WIDTH = 800;
 public static final int GAME_HEIGHT = 600;
+public static final int PIXELSIZE = 16;
 GameState gameState = GameState.MENU;
 boolean showDebug = true;
 
 GameMenu mainMenu;
+LevelEditor levelEditor;
 
 Player playerOne;
 Player playerTwo;
@@ -21,15 +23,17 @@ void settings() {
 }
 
 void setup() {
-  
+
   mainMenu = new GameMenu(gameState);
-  item  = new Item(10, 10);
-  playerOne = new Player(50, 50, 0);
-  playerTwo = new Player(100, 100, 1);
   resources = new Resources();
   resources.populateTileMap();
   level1 = new World("./data/levels/level1.txt");
-}
+  levelEditor = new LevelEditor();
+  
+  item  = new Item(10, 10);
+  playerOne = new Player(50, 50, 0);
+  playerTwo = new Player(100, 100, 1);
+  }
 
 int scrolling = 0;
 void draw() {
@@ -38,8 +42,7 @@ void draw() {
     mainMenu.drawMenu();
     break;
   case LEVELEDITOR:
-    fill(0);
-    rect(0,0, GAME_WIDTH, GAME_HEIGHT);
+    levelEditor.drawLevelEditor();
     break;
   case PLAY :
     background(255);
@@ -90,18 +93,18 @@ void loadLevel() {
 
 void drawMenu() {
   fill(200, 50, 12);
-  rect(0, 0, GAME_WIDTH, GAME_HEIGHT); 
+  rect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 }
 
 void drawDebug() {
   fill(122);
-  rect(0,0,150,50);
+  rect(0, 0, 150, 50);
   fill(0);
-  text("GameState: "+gameState.name(), 20, 20);  
+  text("GameState: "+gameState.name(), 20, 20);
 }
 
-void mousePressed(){
-  if(gameState == GameState.MENU){
+void mousePressed() {
+  if (gameState == GameState.MENU) {
     mainMenu.handleButtons(mouseX, mouseY);
   }
 }
