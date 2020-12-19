@@ -2,7 +2,7 @@ class GameMenu {
   ArrayList<Button> buttonArray = new ArrayList<Button>();
   GameState gameState1;
 
-  
+  //This does not give the reference but a value so now its going over global communication
   GameMenu(GameState state) {
     gameState1 = state;
     //make sure button text is part of GameState enum!
