@@ -127,7 +127,7 @@ void drawDebug() {
 }
 
 void mouseClicked() {
-  if (gameState == GameState.GAME)
+  if (gameState == GameState.PLAY)
     enemySpawner.addEnemy(base);
 }
 

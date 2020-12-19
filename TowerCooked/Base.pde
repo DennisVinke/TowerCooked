@@ -14,7 +14,7 @@ class Base extends Building {
   }
 
   void update() {
-    if (health <=0)  println("dying");
+    // if (health <=0)  println("dying");
   }
 
   void collision(ArrayList<Enemy> enemies) {

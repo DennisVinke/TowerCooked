@@ -14,3 +14,10 @@ enum EditorState{
   EDIT,
   MENU
 }
+
+enum Dir{
+  NORTH,
+  SOUTH,
+  EAST,
+  WEST
+}
