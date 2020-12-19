@@ -4,7 +4,7 @@ class Tower extends Building {
 
   boolean isBuilt;
   boolean isLoaded;
-  
+
   // CANNON FACING DIRECTION -- USES ENUM
   int faceDir;
 
@@ -15,17 +15,17 @@ class Tower extends Building {
   void display() {
     rect(xPos, yPos, size, size);
   }
-  
-  void update(ArrayList<Enemy> enemies){
-     faceDir = changeDir(enemies); 
+
+  void update(ArrayList<Enemy> enemies) {
+    faceDir = changeDir(enemies);
   }
 
-  void changeDir(ArrayList<Enemy> enemies){
-      Enemy enemy = closestEnemy(enemies);
-      int newDir = NORTH;
-      
-      return newDir;
-}
+  int changeDir(ArrayList<Enemy> enemies) {
+    Enemy enemy = closestEnemy(enemies);
+    int newDir = 2;
+
+    return newDir;
+  }
 
   void construct() {
     isBuilt = true;
