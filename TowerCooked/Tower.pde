@@ -17,14 +17,14 @@ class Tower extends Building {
   }
   
   void update(ArrayList<Enemy> enemies){
-     faceDir = changeDir(enemies); 
+    // faceDir = changeDir(enemies); 
   }
 
   void changeDir(ArrayList<Enemy> enemies){
       Enemy enemy = closestEnemy(enemies);
-      int newDir = NORTH;
+     // int newDir = NORTH;
       
-      return newDir;
+    //  return newDir;
 }
 
   void construct() {

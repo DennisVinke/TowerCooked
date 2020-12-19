@@ -20,7 +20,7 @@ class World {
   }
 
   boolean getTileWalkable(int x, int y) {
-    return getTileWalkable(level[x][y].resources.getTileFromMap(""+(row[x])).id);
+    return tileInWalkable(level[x][y].id);
   }
 
   boolean tileInWalkable(int index) {
@@ -32,6 +32,7 @@ class World {
   }
 
   boolean getTileInteractable(int x, int y) {
+    return false;
   }
 
   void drawWorld() {
