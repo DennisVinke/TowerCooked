@@ -3,27 +3,41 @@ class Inventory {
   int playerNumber;
   // GUI
   int size;
+
+  int xPos;
+  int yPos;
   int xOffset = 5;
   int yOffset = 5;
 
   Inventory(int tempNumber) {
     size = 50;
     playerNumber = tempNumber;
+    if (playerNumber == 0) {
+      xPos = 0 + xOffset;
+      yPos = height - size - yOffset;
+    } else {
+      xPos = width - size - xOffset;
+      yPos = height - size - yOffset;
+    }
   }
 
   void display() {
     // DISPLAY LEFT
-    if (playerNumber == 0) {
-      rect(0 + xOffset, height-size-yOffset, size, size);
-    }
+    fill(#FFFFFF);
+    rect(xPos, yPos, size, size);
+    if (item!=null) item.displayInInventory(xPos, yPos);
 
-    // DISPLAY RIGHT
-    if (playerNumber == 1) {
-      rect(width - size - xOffset, height - size - yOffset, size, size);
-    }
   }
-
+  
   void addItem(Item tempItem) {
     item = tempItem;
+  }
+  
+  boolean hasItem(){
+    return item != null; 
+  }
+  
+  void removeItem(){
+     item = null; 
   }
 }

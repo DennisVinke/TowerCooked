@@ -14,7 +14,7 @@ class GameObject{
 
     void update() {}
 
-     boolean isDead() {
+  boolean isDead() {
     return  health <= 0;
   }
 
@@ -26,7 +26,7 @@ class GameObject{
         tileX = (x/PIXELSIZE);
         tileY = (y/PIXELSIZE);
       //if(level1[tileX][tileY]==0)
-      println("collision");
+      // println("collision");
       return true;
   }
 }

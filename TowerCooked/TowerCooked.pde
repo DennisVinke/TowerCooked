@@ -19,6 +19,7 @@ static Resources resources;
 World level1;
 EnemySpawner enemySpawner;
 Base base;
+Tower tower;
 
 void settings() {
   size(GAME_WIDTH, GAME_HEIGHT);
@@ -35,7 +36,8 @@ void setup() {
   item  = new Item(10, 10);
   playerOne = new Player(50, 50, 0);
   playerTwo = new Player(100, 100, 1);
-  base = new Base(100, 100);
+  base = new Base(400, 100);
+  tower = new Tower(300, 200);
   enemySpawner = new EnemySpawner(200, 200);
 }
 
@@ -68,7 +70,7 @@ void draw() {
     // All things player
     playerOne.display();
     playerTwo.display();
-    playerOne.update();
+    playerOne.update(item);
     playerTwo.update();
 
     item.display();
@@ -80,6 +82,9 @@ void draw() {
     // BASE & TOWER
     base.display();
     base.update();
+    
+    tower.display();
+    tower.update(enemySpawner.enemies);
 
     // COLLISION HANDLING
     base.collision(enemySpawner.enemies);
