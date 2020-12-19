@@ -1,75 +1,85 @@
-class Player{
-  Inventory inventory = new Inventory();
+class Player {
+  final static int xSpeedNormal = 2;
+  final static int ySpeedNormal = 2;
+  final static int xSpeedFast = 2;
+  final static int ySpeedFast = 2;
   
+  Inventory inventory;
+
   int xPos;
   int yPos;
   int xSpeed = 1;
   int ySpeed = 1;
-  
-  // Movement booleans
-  boolean moveLeft = false;
-  boolean moveRight = false;
-  boolean moveUp = false;
-  boolean moveDown = false;
-  
-  Player(int tempX, int tempY){
+
+  // MOVEMENT KEYS -- [PlayerOne, Player Two]
+  int playerNumber;
+  char[] runningKey = {'t', 'p'};
+  char[] leftKey    = {'a', 'j'};
+  char[] rightKey   = {'d', 'l'};
+  char[] upKey      = {'w', 'i'};
+  char[] downKey    = {'s', 'k'};
+
+  // MOVEMENT BOOLEANS
+  boolean isRunning   = false;
+  boolean moveLeft    = false;
+  boolean moveRight   = false;
+  boolean moveUp      = false;
+  boolean moveDown    = false;
+
+  // CONSTRUCTOR
+  Player(int tempX, int tempY, int tempNumber) {
     xPos = tempX;
     yPos = tempY;
+    playerNumber = tempNumber;
+    inventory = new Inventory(tempNumber);
+    
   }
-  
-  void display(){
-     ellipse(xPos, yPos, 10, 10);   
-     inventory.display();
+
+  void display() {
+    ellipse(xPos, yPos, 10, 10);   
+    inventory.display();
   }
-  
-  void update(){
-    // Movement
-     if(moveLeft){
-        xPos -= xSpeed; 
-     }
-     if(moveRight){
-        xPos += xSpeed; 
-     }
-     if(moveUp){
-        yPos -= ySpeed; 
-     }
-     if(moveDown){
-        yPos += ySpeed; 
-     }
-  }
-  
-  void pickUp(){
-   
-  }
-  
-  void keyPressEvent(char theKey){
-    if(theKey == 'W' || theKey == 'w'){
-      moveUp = true;
-    }
-    if(theKey == 'S' || theKey == 's'){
-      moveDown = true;
-    }
-    if(theKey == 'A' || theKey == 'a'){
-      moveLeft = true;
-    }
-    if(theKey == 'D' || theKey == 'd'){
-      moveRight = true;
+
+  void update() {
+    // MOVEMENT
+    if (moveLeft)  xPos -= xSpeed; 
+    if (moveRight) xPos += xSpeed; 
+    if (moveUp)    yPos -= ySpeed; 
+    if (moveDown)  yPos += ySpeed;
+
+    // TOGGLE RUNNING
+    if (isRunning) {
+      xSpeed = xSpeedFast;
+      ySpeed = ySpeedFast;
+    } else {
+      xSpeed = xSpeedNormal;
+      ySpeed = ySpeedNormal;
     }
   }
-  
-  void keyReleaseEvent(char theKey){
-    if(theKey == 'W' || theKey == 'w'){
-      moveUp = false;
-    }
-    if(theKey == 'S' || theKey == 's'){
-      moveDown = false;
-    }
-    if(theKey == 'A' || theKey == 'a'){
-      moveLeft = false;
-    }
-    if(theKey == 'D' || theKey == 'd'){
-      moveRight = false;
-    }
+
+  void pickUp(Item item) {
+    inventory.addItem(item);
   }
-  
+
+  void keyPressEvent(char theKey) {
+    // MOVEMENT DIRECTION PRESSED
+    if (theKey == Character.toLowerCase(upKey[playerNumber])) moveUp = true;
+    if (theKey == Character.toLowerCase(downKey[playerNumber])) moveDown = true;
+    if (theKey == Character.toLowerCase(leftKey[playerNumber])) moveLeft = true;
+    if (theKey == Character.toLowerCase(rightKey[playerNumber])) moveRight = true;
+
+    // RUNNING TRUE  
+    if (theKey == Character.toLowerCase(runningKey[playerNumber])) isRunning = true;
+  }
+
+  void keyReleaseEvent(char theKey) {
+    // MOVEMENT DIRECTIONS RELEASE
+    if (theKey == Character.toLowerCase(upKey[playerNumber])) moveUp = false;
+    if (theKey == Character.toLowerCase(downKey[playerNumber])) moveDown = false;
+    if (theKey == Character.toLowerCase(leftKey[playerNumber])) moveLeft = false;
+    if (theKey == Character.toLowerCase(rightKey[playerNumber])) moveRight = false;
+
+    // RUNNING FALSE
+    if (theKey == Character.toLowerCase(runningKey[playerNumber])) isRunning = false;
+  }
 }

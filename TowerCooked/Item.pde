@@ -1,10 +1,15 @@
 class Item{
+  int xPos;
+  int yPos;
   
-  Item(){
-    
+  Item(int tempX, int tempY){
+     xPos = tempX;
+     yPos = tempY;
   }
   
   void display(){
-    ellipse(10, 10, 10, 10); 
+    fill(#423942);
+    ellipse(xPos, yPos, 10, 10); 
+    fill(#FFFFFF);
   }
 }
