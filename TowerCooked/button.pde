@@ -12,9 +12,9 @@ class Button {
     buttonHeight = bH;
     text = t;
   }
-  
-  void drawButton(){
-    fill(200,200,200);
+
+  void drawButton() {
+    fill(200, 200, 200);
     rect(xPos, yPos, buttonWidth, buttonHeight);
     text(text, xPos, yPos);
   }

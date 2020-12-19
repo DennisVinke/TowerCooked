@@ -17,14 +17,28 @@ class World {
   }
 
   void initLevel() {
-    
   }
-  
+
+  boolean getTileWalkable(int x, int y) {
+    return getTileWalkable(level[x][y].resources.getTileFromMap(""+(row[x]).id));
+  }
+
+  boolean tileInWalkable(int index) {
+    for (int i : walkableArray) { //<>//
+      if (i==index)
+        return true;
+    }
+    return false;
+  }
+
+  boolean getTileInteractable(int x, int y) {
+  }
+
   void drawWorld() {
     for (int x = 0; x < sizeX; x++) {
       for (int y = 0; y < sizeY; y++) {
-        if(level[x][y]!=null)
-        level[x][y].drawTile(x, y); //<>//
+        if (level[x][y]!=null)
+          level[x][y].drawTile(x, y); //<>//
       }
     }
   }

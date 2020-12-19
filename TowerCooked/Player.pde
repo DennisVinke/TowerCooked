@@ -1,13 +1,11 @@
-class Player {
+class Player extends GameObject {
   final static int xSpeedNormal = 2;
   final static int ySpeedNormal = 2;
   final static int xSpeedFast = 2;
   final static int ySpeedFast = 2;
-  
+
   Inventory inventory;
 
-  int xPos;
-  int yPos;
   int xSpeed = 1;
   int ySpeed = 1;
 
@@ -28,11 +26,9 @@ class Player {
 
   // CONSTRUCTOR
   Player(int tempX, int tempY, int tempNumber) {
-    xPos = tempX;
-    yPos = tempY;
+    super(tempX, tempY);
     playerNumber = tempNumber;
     inventory = new Inventory(tempNumber);
-    
   }
 
   void display() {
@@ -42,10 +38,10 @@ class Player {
 
   void update() {
     // MOVEMENT
-    if (moveLeft)  xPos -= xSpeed; 
-    if (moveRight) xPos += xSpeed; 
-    if (moveUp)    yPos -= ySpeed; 
-    if (moveDown)  yPos += ySpeed;
+    if (moveLeft  && checkCollisionStatic(xPos-xSpeed, yPos))  xPos -= xSpeed; 
+    if (moveRight && checkCollisionStatic(xPos+xSpeed, yPos))  xPos += xSpeed; 
+    if (moveUp    && checkCollisionStatic(xPosx, yPos-yspeed)) yPos -= ySpeed; 
+    if (moveDown  && checkCollisionStatic(xPos, yPos+ySpeed))  yPos += ySpeed;
 
     // TOGGLE RUNNING
     if (isRunning) {
