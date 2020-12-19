@@ -17,6 +17,8 @@ Player playerTwo;
 Item item;
 static Resources resources;
 World level1;
+EnemySpawner enemySpawner;
+Base base;
 
 void settings() {
   size(GAME_WIDTH, GAME_HEIGHT);
@@ -29,11 +31,13 @@ void setup() {
   resources.populateTileMap();
   level1 = new World("./data/levels/level1.txt");
   levelEditor = new LevelEditor();
-  
+
   item  = new Item(10, 10);
   playerOne = new Player(50, 50, 0);
   playerTwo = new Player(100, 100, 1);
-  }
+  base = new Base(100, 100);
+  enemySpawner = new EnemySpawner(200, 200);
+}
 
 int scrolling = 0;
 void draw() {
@@ -49,7 +53,7 @@ void draw() {
     pushMatrix();
     //scale(2);
     resources.drawAllResources();
-    drawGrid(16);
+    //drawGrid(16);
     popMatrix();
     break;
   case PLAY :
@@ -68,6 +72,17 @@ void draw() {
     playerTwo.update();
 
     item.display();
+
+    // ENEMY SPAWNER & ENEMIES
+    enemySpawner.display();
+    enemySpawner.run();
+
+    // BASE & TOWER
+    base.display();
+    base.update();
+
+    // COLLISION HANDLING
+    base.collision(enemySpawner.enemies);
 
     //resources.drawAllResources();
     popMatrix();
@@ -111,11 +126,16 @@ void drawDebug() {
   text("GameState: "+gameState.name(), 20, 20);
 }
 
+void mouseClicked() {
+  if (gameState == GameState.GAME)
+    enemySpawner.addEnemy(base);
+}
+
 void mousePressed() {
   if (gameState == GameState.MENU) {
     mainMenu.handleButtons(mouseX, mouseY);
   }
-  if (gameState == GameState.TILEMAPDEBUG){
+  if (gameState == GameState.TILEMAPDEBUG) {
     String mKey = ""+((mouseX/PIXELSIZE) + (mouseY/16)*PIXELSIZE);
     println(mKey);
     //resources.get
