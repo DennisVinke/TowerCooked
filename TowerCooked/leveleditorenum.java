@@ -1,16 +1,16 @@
-enum GameState{
-  MENU,
-  START,
-  LOAD,
-  PLAY,
-  PAUZE,
-  LEVELEDITOR,
-  TILEMAPDEBUG
+enum GameState {
+  MENU, 
+    START, 
+    LOAD, 
+    PLAY, 
+    PAUZE, 
+    LEVELEDITOR, 
+    TILEMAPDEBUG
 }
 
-enum EditorState{
-  LOAD,
-  SAVE,
-  EDIT,
-  MENU
+enum EditorState {
+  LOAD, 
+    SAVE, 
+    EDIT, 
+    MENU
 }

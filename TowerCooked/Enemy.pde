@@ -1,4 +1,4 @@
-class Enemy {
+class Enemy extends GameObject {
   // STANDARD PARAMETERS
   int xPos;
   int yPos;
@@ -16,8 +16,7 @@ class Enemy {
   int health = 100;
 
   Enemy(int tempX, int tempY, int tempGoalX, int tempGoalY) {
-    xPos = tempX;
-    yPos = tempY;
+    super(tempX, tempY);
     goalX = tempGoalX;
     goalY = tempGoalY;
   }
@@ -55,9 +54,5 @@ class Enemy {
     accDistance += abs(xPos - goalX);
     accDistance += abs(yPos - goalY);
     return accDistance <= proximityThreshold;
-  }
-
-  boolean isDead() {
-    return  health <= 0;
   }
 }
