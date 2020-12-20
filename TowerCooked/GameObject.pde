@@ -14,7 +14,7 @@ class GameObject{
 
     void update() {}
 
-  boolean isDead() {
+     boolean isDead() {
     return  health <= 0;
   }
 
@@ -22,13 +22,22 @@ class GameObject{
   return false;
   }
 
+  boolean checkCollisionGameObject(){
+    return false;
+  }
+
+  boolean handleCollision(){
+    return false;
+  }
+
+  boolean checkPlaceInFront(){
+    return false;
+  }
+
   boolean checkCollisionStatic(int x, int y){ 
       int tileX, tileY;
         tileX = (x/PIXELSIZE);
         tileY = (y/PIXELSIZE);
-
-      //if(level1[tileX][tileY]==0)
-      // println("collision");
-      return true;
+      return level1.getTileWalkable(tileX,tileY);
   }
 }
