@@ -38,6 +38,8 @@ class GameObject{
       int tileX, tileY;
         tileX = (x/PIXELSIZE);
         tileY = (y/PIXELSIZE);
+      if(!(tileX>=0 && tileY >=0 && tileY<level1.sizeY && tileX < level1.sizeX))
+        return false;
       return level1.getTileWalkable(tileX,tileY);
   }
 }

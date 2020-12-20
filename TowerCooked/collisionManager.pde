@@ -1,9 +1,9 @@
 class CollisionManager
 {
-    ArrayList<<GameObject> gameObjects;
+    ArrayList<GameObject> gameObjects;
     
     CollisionManager(){
-        gameObjects = new ArrayList<<GameObject>();
+        gameObjects = new ArrayList<GameObject>();
     }
 
     void addToGameObjects(GameObject ob){
