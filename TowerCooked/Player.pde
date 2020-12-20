@@ -65,6 +65,10 @@ class Player extends GameObject {
     tower.interact(inventory);  
   }
 
+  void handleCollision(GameObject gb){
+    println("Collision with enemy");
+  }
+
   void keyPressEvent(char theKey) {
     // MOVEMENT DIRECTION PRESSED
     if (theKey == Character.toLowerCase(upKey[playerNumber])) moveUp = true;

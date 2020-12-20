@@ -27,6 +27,7 @@ class EnemySpawner {
       e.display();
       e.update();
       if (e.isDead()) {
+        CollisionManager.removeFromGameObjects(enemies.get(i));
         enemies.remove(i);
       }
     }
@@ -35,7 +36,7 @@ class EnemySpawner {
   void addEnemy(Base base) {
     // int randX = (int) random(400);
     // int randY = (int) random(400);
-
     enemies.add(new Enemy(xPos, yPos, base.xPos, base.yPos));
+    CollisionManager.addToGameObjects(enemies.get(enemies.size()-1));
   }
 }

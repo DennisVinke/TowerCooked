@@ -2,6 +2,7 @@ class GameObject{
 
   int xPos;
   int yPos;
+  int size = 10;
 
   int health = 100;
 
@@ -19,7 +20,7 @@ class GameObject{
   }
 
   boolean collide(){
-  return false;
+    return false;
   }
 
   boolean checkCollisionGameObject(){

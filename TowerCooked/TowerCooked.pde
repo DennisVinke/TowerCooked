@@ -79,6 +79,17 @@ void draw() {
     enemySpawner.display();
     enemySpawner.run();
 
+    GameObject collideWith = CollisionManager.collision(playerOne);
+    
+    if(collideWith!=null){
+      println("Colll");
+      playerOne.handleCollision(collideWith);
+    }
+    collideWith = CollisionManager.collision(playerTwo);
+    if(collideWith!=null){
+      println("Colll");
+      playerTwo.handleCollision();
+    }
     // BASE & TOWER
     base.display();
     base.update();
