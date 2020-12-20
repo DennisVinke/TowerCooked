@@ -21,12 +21,11 @@ class GameObject{
   boolean collide(){
   return false;
   }
+
   boolean checkCollisionStatic(int x, int y){ 
       int tileX, tileY;
         tileX = (x/PIXELSIZE);
         tileY = (y/PIXELSIZE);
-      //if(level1[tileX][tileY]==0)
-      println("collision");
-      return true;
+      return level1.getTileWalkable(tileX,tileY);
   }
 }
