@@ -28,7 +28,7 @@ class Tower extends Building {
 
   void update(ArrayList<Enemy> enemies) {
     // faceDir = changeDir(enemies);
-    for (int i = bullets.size(); i >= 0; i--) {
+    for (int i = bullets.size()-1; i >= 0; i--) {
       // THIS SHOULDNT BE HERE
       Bullet b = bullets.get(i);
       b.display(); 

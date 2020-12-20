@@ -61,8 +61,8 @@ void draw() {
   case PLAY :
     background(255);
     pushMatrix();
-    //translate(playerOne.xPos, playerOne.yPos);
-    //scale(2);
+    // translate(playerOne.xPos, playerOne.yPos);
+    // scale(2);
 
     drawGrid(16);
     level1.drawWorld();
@@ -71,7 +71,7 @@ void draw() {
     playerOne.display();
     playerTwo.display();
     playerOne.update(item);
-    playerTwo.update();
+    playerTwo.update(item);
 
     item.display();
 
@@ -89,7 +89,7 @@ void draw() {
     // COLLISION HANDLING
     base.collision(enemySpawner.enemies);
 
-    //resources.drawAllResources();
+    // resources.drawAllResources();
     popMatrix();
     break;
   }

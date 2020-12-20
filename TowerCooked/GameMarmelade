@@ -1,0 +1,71 @@
+	+--------------+
+	|Things for MVP|
+	+--------------+
+
+1 Character:
+============
+X Move
+
+D Collision / Boundaries (Enemy, Tower, Tiles, Base)
+M Interaction progress bar
+M/D Interact w/ Tower
+
+
+2 Enemies:
+==========
+X Enemy Spawner
+X Damage to Base ! once ! -> Followed by respawn
+X Status (health, lives whatever) 
+
+M Walk autonomously to Base (follow path)
+
+3 Base:
+=======
+X Buildings super class
+X Health
+
+M Repairable 
+
+4 Towers:
+=========
+- Cannon tower
+- Place
+- Build
+M Load
+M Fire (radius)
+-> Building/Construction/Crafting
+
+5 Map:
+=======
+- Mapsize: 16:9 
+D First: Straight Road
+D Second: Road with Fork 
+
+6 Resources/Sprites:
+====================
+M Mockup of first level
+- Re-arrange tilemap
+
++------------------------------------------+
+----------- STRETCHERINO -------------------
++------------------------------------------+
++ Character:
+	- Attack  
+	- Status (health, stunned, stamina etc.)
+
++ Enemies
+	- Loot
+	- Status ailments
+	- Attacking towers
+	- Types
+	
++  Base:
+	-> resoursce management
+
++ Tower:
+	- Health -> Repair
+	- Resources / Buildings / Resource-transformation (eg Iron -> Cannon)
+
+5.	 Resources/Items
+
+6. Difficulty settings

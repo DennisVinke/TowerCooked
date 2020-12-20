@@ -1,6 +1,6 @@
 class CollisionManager
 {
-    ArrayList<<T> gameObjects;
+    ArrayList<<GameObject> gameObjects;
     
     CollisionManager(){
         gameObjects = new ArrayList<<GameObject>();
