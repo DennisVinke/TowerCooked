@@ -2,48 +2,69 @@ class Tower extends Building {
 
   final int size = 16;
 
-  boolean isBuilt;
+  boolean isBuilt = false;
   boolean isLoaded;
-  
+
+  ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+
   // CANNON FACING DIRECTION -- USES ENUM
-  int faceDir;
+  Dir faceDir = Dir.NORTH;
 
   Tower(int tempX, int tempY) {
     super(tempX, tempY);
   }
 
   void display() {
+    if (!isBuilt) {
+      // UNDER CONSTRUCTION
+      fill(#964B00);
+    } else {
+      // READY
+      fill(#FFFFFF);
+    }
     rect(xPos, yPos, size, size);
-  }
-  
-  void update(ArrayList<Enemy> enemies){
-    // faceDir = changeDir(enemies); 
+    
   }
 
-  void changeDir(ArrayList<Enemy> enemies){
-      Enemy enemy = closestEnemy(enemies);
-     // int newDir = NORTH;
-      
+  void update(ArrayList<Enemy> enemies) {
+    // faceDir = changeDir(enemies);
+    for (int i = bullets.size(); i >= 0; i--) {
+      // THIS SHOULDNT BE HERE
+      Bullet b = bullets.get(i);
+      b.display(); 
+      b.update();
+      if (b.isDead()) {
+        bullets.remove(i);
+      }
+    }
+  }
+
+  void changeDir(ArrayList<Enemy> enemies) {
+    Enemy enemy = closestEnemy(enemies);
+    // int newDir = NORTH;
+
     //  return newDir;
-}
+  }
 
   void construct() {
     isBuilt = true;
   }
 
-  void loadCannon() {
+  void interact(Inventory inventory) {
     if (isBuilt) {
-      isLoaded = true;
-    } else {
-      println("Construct tower first.");
-    }
-  }
 
-  void fireCannon() {
-    if (isBuilt) {
-      isLoaded = false;
+      if (isLoaded) {
+        println("Fire!");
+        bullets.add(new Bullet(xPos, yPos));
+      } else {
+        if (inventory.hasItem()) {
+          println("Loading!");
+          inventory.removeItem();
+          isLoaded = true;
+        }
+      }
     } else {
-      println("Construct tower first.");
+      construct();
     }
   }
 

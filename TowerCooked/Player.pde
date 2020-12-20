@@ -11,11 +11,12 @@ class Player extends GameObject {
 
   // MOVEMENT KEYS -- [PlayerOne, Player Two]
   int playerNumber;
-  char[] runningKey = {'t', 'p'};
-  char[] leftKey    = {'a', 'j'};
-  char[] rightKey   = {'d', 'l'};
-  char[] upKey      = {'w', 'i'};
-  char[] downKey    = {'s', 'k'};
+  char[] runningKey  = {'t', 'p'};
+  char[] leftKey     = {'a', 'j'};
+  char[] rightKey    = {'d', 'l'};
+  char[] upKey       = {'w', 'i'};
+  char[] downKey     = {'s', 'k'};
+  char[] interactKey = {'q', 'u'};
 
   // MOVEMENT BOOLEANS
   boolean isRunning   = false;
@@ -36,11 +37,11 @@ class Player extends GameObject {
     inventory.display();
   }
 
-  void update() {
+  void update(Item item) {
     // MOVEMENT
     if (moveLeft  && checkCollisionStatic(xPos-xSpeed, yPos))  xPos -= xSpeed; 
     if (moveRight && checkCollisionStatic(xPos+xSpeed, yPos))  xPos += xSpeed; 
-    if (moveUp    && checkCollisionStatic(xPos, yPos-ySpeed)) yPos -= ySpeed; 
+    if (moveUp    && checkCollisionStatic(xPos, yPos-ySpeed))  yPos -= ySpeed; 
     if (moveDown  && checkCollisionStatic(xPos, yPos+ySpeed))  yPos += ySpeed;
 
     // TOGGLE RUNNING
@@ -51,10 +52,17 @@ class Player extends GameObject {
       xSpeed = xSpeedNormal;
       ySpeed = ySpeedNormal;
     }
+    
+    if(abs(xPos - item.xPos) <= 3 && abs(yPos - item.yPos) <= 3) pickUp(item);
   }
 
   void pickUp(Item item) {
     inventory.addItem(item);
+    item.setPickedUp();
+  }
+  
+  void interact(Tower tower){
+    tower.interact(inventory);  
   }
 
   void keyPressEvent(char theKey) {
@@ -66,6 +74,9 @@ class Player extends GameObject {
 
     // RUNNING TRUE  
     if (theKey == Character.toLowerCase(runningKey[playerNumber])) isRunning = true;
+
+    // INTERACTION -> TODO: REFACTOR
+    if (theKey == Character.toLowerCase(interactKey[playerNumber])) interact(tower);
   }
 
   void keyReleaseEvent(char theKey) {

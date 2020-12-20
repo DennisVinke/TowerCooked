@@ -35,6 +35,7 @@ class EnemySpawner {
   void addEnemy(Base base) {
     // int randX = (int) random(400);
     // int randY = (int) random(400);
+
     enemies.add(new Enemy(xPos, yPos, base.xPos, base.yPos));
   }
 }

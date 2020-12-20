@@ -1,7 +1,5 @@
 class Enemy extends GameObject {
   // STANDARD PARAMETERS
-  int xPos;
-  int yPos;
 
   final int xSpeed = 1;
   final int ySpeed = 1;
@@ -12,11 +10,10 @@ class Enemy extends GameObject {
   int goalX;
   int goalY;
 
-  // STATUS
-  int health = 100;
+
 
   Enemy(int tempX, int tempY, int tempGoalX, int tempGoalY) {
-    super(tempX, tempY);
+    super(tempX, tempY);    
     goalX = tempGoalX;
     goalY = tempGoalY;
   }
